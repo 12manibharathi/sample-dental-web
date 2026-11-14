@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lumina Dental Studio | Smile Design in Coimbatore</title>
+<meta name="description" content="Painless dentistry, smile design and root canal care. Book instantly on WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+/* Layout: dark aurora canvas, floating glass nav, 3D-tilt hero card with orbiting chips, marquee, count-up stats,
+   spotlight treatment cards, drag-to-reveal whitening slider, drawn timeline, rotating reviews, WhatsApp booking. */
+:root{
+  --bg:#0a0720;
+  --bg2:#120d33;
+  --violet:#8b6cff;
+  --cyan:#4ff0d2;
+  --pink:#ff7ac6;
+  --text:#f3f0ff;
+  --muted:#a9a3cf;
+  --glass:rgba(255,255,255,.06);
+  --edge:rgba(255,255,255,.13);
+  --font-display:'Syne','Segoe UI',system-ui,sans-serif;
+  --font-body:'Manrope','Segoe UI',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-body);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img,svg{max-width:100%}
+h1,h2,h3{font-family:var(--font-display);margin:0;line-height:1.05;letter-spacing:-.02em;text-wrap:balance}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:max(20px,env(safe-area-inset-left,0px))}
+section{position:relative;padding-block:96px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.76rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan)}
+.eyebrow::before{content:"";width:26px;height:2px;background:linear-gradient(90deg,var(--cyan),transparent)}
+.h2{font-size:clamp(2rem,4.6vw,3.4rem);margin-top:14px}
+.lead{color:var(--muted);max-width:56ch;margin-top:16px}
+.grad{background:linear-gradient(100deg,var(--cyan),var(--violet) 50%,var(--pink));background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:flow 6s linear infinite}
+@keyframes flow{to{background-position:200% 0}}
+
+/* aurora background */
+.aurora{position:fixed;inset:0;z-index:-1;overflow:hidden;background:radial-gradient(1200px 700px at 50% -10%,#1c1450,var(--bg) 70%)}
+.aurora i{position:absolute;border-radius:50%;filter:blur(90px);opacity:.55;animation:drift 18s ease-in-out infinite alternate}
+.aurora i:nth-child(1){width:520px;height:520px;background:var(--violet);left:-8%;top:8%}
+.aurora i:nth-child(2){width:460px;height:460px;background:#14b8a6;right:-6%;top:30%;animation-duration:22s;animation-delay:-6s;opacity:.38}
+.aurora i:nth-child(3){width:380px;height:380px;background:var(--pink);left:35%;bottom:-8%;animation-duration:26s;animation-delay:-10s;opacity:.28}
+@keyframes drift{0%{transform:translate(0,0) scale(1)}100%{transform:translate(70px,-50px) scale(1.18)}}
+.stars-bg{position:fixed;inset:0;z-index:-1;background-image:radial-gradient(1.2px 1.2px at 20% 30%,#fff8,transparent),radial-gradient(1px 1px at 70% 20%,#fff6,transparent),radial-gradient(1.4px 1.4px at 85% 70%,#fff7,transparent),radial-gradient(1px 1px at 40% 80%,#fff6,transparent),radial-gradient(1.2px 1.2px at 10% 75%,#fff6,transparent);background-size:420px 420px;animation:tw 6s ease-in-out infinite alternate;opacity:.7}
+@keyframes tw{to{opacity:.25}}
+.glow{position:fixed;width:420px;height:420px;border-radius:50%;pointer-events:none;z-index:0;left:0;top:0;background:radial-gradient(circle,rgba(139,108,255,.20),transparent 65%);transform:translate(-50%,-50%);opacity:0;transition:opacity .3s}
+.progress{position:fixed;top:0;left:0;height:3px;width:100%;transform-origin:left;transform:scaleX(0);background:linear-gradient(90deg,var(--cyan),var(--violet),var(--pink));z-index:60}
+
+/* buttons */
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 28px;border-radius:999px;border:0;font:inherit;font-weight:700;text-decoration:none;cursor:pointer;overflow:hidden;transition:transform .25s,box-shadow .25s}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-main{background:linear-gradient(120deg,var(--violet),#6a4cff 50%,var(--cyan) 140%);color:#fff;box-shadow:0 14px 36px -12px rgba(139,108,255,.8)}
+.btn-main::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.45) 50%,transparent 70%);transform:translateX(-120%);animation:shine 3.6s ease-in-out infinite}
+@keyframes shine{50%,100%{transform:translateX(120%)}}
+.btn-line{background:var(--glass);color:var(--text);box-shadow:inset 0 0 0 1.5px var(--edge);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.btn:hover{transform:translateY(-3px)}
+.btn:focus-visible,a:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
+
+/* nav */
+.nav{position:sticky;top:12px;z-index:50;margin-top:12px}
+.nav .bar{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px;padding:0 10px 0 20px;border-radius:999px;background:rgba(18,13,51,.55);border:1px solid var(--edge);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 20px 50px -28px #000}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:800;font-size:1.15rem;text-decoration:none}
+.brand i{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;background:linear-gradient(135deg,var(--violet),var(--cyan))}
+.brand svg{width:19px}
+.links{display:flex;gap:28px;font-size:.92rem;font-weight:600;color:var(--muted)}
+.links a{text-decoration:none;transition:color .2s}
+.links a:hover{color:#fff}
+.nav .btn{padding:11px 20px;font-size:.9rem}
+
+/* hero */
+.hero{padding-block:70px 60px}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.badge{display:inline-flex;align-items:center;gap:10px;padding:8px 16px;border-radius:999px;background:var(--glass);border:1px solid var(--edge);font-size:.84rem;font-weight:600;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.badge .dot{width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 0 rgba(79,240,210,.7);animation:ping 2s infinite}
+@keyframes ping{70%{box-shadow:0 0 0 10px rgba(79,240,210,0)}100%{box-shadow:0 0 0 0 rgba(79,240,210,0)}}
+.hero h1{font-size:clamp(2.7rem,7vw,5.3rem);margin-top:22px;font-weight:800}
+.hw{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.08em}
+.hw>span{display:inline-block;animation:rise .9s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i)*.09s + .15s)}
+@keyframes rise{from{transform:translateY(110%) rotate(5deg);opacity:0}to{transform:none;opacity:1}}
+.hero .lead{font-size:1.1rem;animation:fade .9s .75s both}
+.cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px;animation:fade .9s .95s both}
+@keyframes fade{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.proof{display:flex;align-items:center;gap:14px;margin-top:36px;animation:fade .9s 1.1s both}
+.faces{display:flex}
+.faces i{width:38px;height:38px;border-radius:50%;border:2px solid var(--bg);margin-left:-10px;background:linear-gradient(135deg,var(--violet),var(--pink))}
+.faces i:nth-child(2){background:linear-gradient(135deg,var(--cyan),var(--violet))}
+.faces i:nth-child(3){background:linear-gradient(135deg,var(--pink),#ffb36b)}
+.faces i:first-child{margin-left:0}
+.proof small{color:var(--muted);display:block;line-height:1.3}
+.proof b{color:#fff}
+.gold{color:#ffc46b;letter-spacing:2px}
+
+.scene{position:relative;perspective:1100px;max-width:480px;width:100%;margin-inline:auto}
+.card3d{position:relative;aspect-ratio:1/1.1;border-radius:36px;background:linear-gradient(155deg,rgba(255,255,255,.13),rgba(255,255,255,.03));border:1px solid var(--edge);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 50px 90px -40px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,255,255,.25);transform-style:preserve-3d;transition:transform .15s ease-out;display:grid;place-items:center;overflow:visible}
+.ring{position:absolute;border-radius:50%;border:1.5px dashed rgba(255,255,255,.18);animation:spin 30s linear infinite}
+.ring.r1{inset:10%}
+.ring.r2{inset:-6%;animation-duration:46s;animation-direction:reverse;border-color:rgba(79,240,210,.25)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.tooth{width:56%;transform:translateZ(70px);animation:bob 5s ease-in-out infinite;filter:drop-shadow(0 30px 40px rgba(139,108,255,.55))}
+@keyframes bob{50%{transform:translateZ(70px) translateY(-16px) rotate(2deg)}}
+.chip{position:absolute;padding:10px 16px;border-radius:16px;background:rgba(18,13,51,.7);border:1px solid var(--edge);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);font-size:.82rem;font-weight:700;white-space:nowrap;display:flex;align-items:center;gap:8px;transform:translateZ(110px);animation:bob2 6s ease-in-out infinite;box-shadow:0 18px 30px -16px #000}
+.chip b{width:8px;height:8px;border-radius:50%;background:var(--cyan)}
+.chip.c1{left:-8%;top:14%}
+.chip.c2{right:-7%;top:38%;animation-delay:-2s}.chip.c2 b{background:var(--pink)}
+.chip.c3{left:2%;bottom:8%;animation-delay:-4s}.chip.c3 b{background:var(--violet)}
+@keyframes bob2{50%{transform:translateZ(110px) translateY(-12px)}}
+.sp{position:absolute;width:22px;height:22px;color:#fff;animation:twinkle 2.6s ease-in-out infinite;transform:translateZ(130px)}
+.sp.s1{right:18%;top:12%}.sp.s2{left:20%;top:30%;width:14px;animation-delay:-1s}.sp.s3{right:14%;bottom:18%;width:16px;animation-delay:-1.8s}
+@keyframes twinkle{0%,100%{opacity:.15;scale:.5}50%{opacity:1;scale:1.15}}
+
+/* marquee */
+.marq{padding-block:26px;border-block:1px solid var(--edge);background:rgba(255,255,255,.025);overflow:hidden}
+.track{display:flex;gap:46px;width:max-content;animation:slide 38s linear infinite}
+.marq:hover .track{animation-play-state:paused}
+.track span{display:flex;align-items:center;gap:46px;font-family:var(--font-display);font-weight:700;font-size:1.35rem;color:#cfc8ff;white-space:nowrap}
+.track span::after{content:"\2726";color:var(--cyan);font-size:1rem}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* stats */
+.stats{padding-block:70px 20px}
+.sgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.stat{padding:30px 24px;border-radius:24px;background:var(--glass);border:1px solid var(--edge);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.stat b{display:block;font-family:var(--font-display);font-size:clamp(2.2rem,4vw,3.2rem);background:linear-gradient(120deg,#fff,var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent;font-variant-numeric:tabular-nums}
+.stat span{color:var(--muted);font-size:.9rem}
+
+/* treatments */
+.tgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:46px}
+.tc{position:relative;padding:28px;border-radius:26px;background:var(--glass);border:1px solid var(--edge);overflow:hidden;transition:transform .3s,border-color .3s;--mx:50%;--my:50%}
+.tc::before{content:"";position:absolute;inset:0;background:radial-gradient(260px circle at var(--mx) var(--my),rgba(139,108,255,.35),transparent 70%);opacity:0;transition:opacity .3s}
+.tc:hover{transform:translateY(-8px);border-color:rgba(139,108,255,.6)}
+.tc:hover::before{opacity:1}
+.tc>*{position:relative}
+.tic{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(139,108,255,.35),rgba(79,240,210,.2));border:1px solid var(--edge);transition:transform .4s}
+.tc:hover .tic{transform:rotate(-8deg) scale(1.1)}
+.tic svg{width:26px;height:26px}
+.tc h3{font-size:1.25rem;margin-top:20px}
+.tc p{margin:10px 0 0;color:var(--muted);font-size:.92rem}
+.tc .tag{display:inline-block;margin-top:16px;font-size:.74rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--cyan)}
+
+/* whitening slider */
+.ba .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+.ba-box{position:relative;aspect-ratio:16/10;border-radius:30px;overflow:hidden;border:1px solid var(--edge);background:linear-gradient(180deg,#2a1a4d,#1a1035);box-shadow:0 40px 80px -40px #000;--pos:50%;user-select:none;touch-action:pan-y}
+.ba-box svg.layer{position:absolute;inset:0;width:100%;height:100%}
+.ba-top{position:absolute;inset:0;clip-path:inset(0 calc(100% - var(--pos)) 0 0)}
+.ba-handle{position:absolute;top:0;bottom:0;left:var(--pos);width:3px;background:#fff;transform:translateX(-50%);box-shadow:0 0 20px rgba(255,255,255,.7);pointer-events:none}
+.ba-handle i{position:absolute;top:50%;left:50%;width:46px;height:46px;border-radius:50%;transform:translate(-50%,-50%);background:#fff;color:var(--bg);display:grid;place-items:center;font-style:normal;font-weight:800;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.ba-box input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.ba-box input:focus-visible+.ba-handle i{outline:3px solid var(--cyan)}
+.lbl{position:absolute;top:16px;padding:6px 14px;border-radius:999px;font-size:.74rem;font-weight:800;letter-spacing:.1em;background:rgba(0,0,0,.45);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.lbl.l{left:16px}.lbl.r{right:16px}
+.ba-note{font-size:.78rem;color:var(--muted);margin-top:12px}
+.checks{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:14px}
+.checks li{display:flex;gap:12px;align-items:flex-start;color:#dcd7ff}
+.checks svg{width:22px;height:22px;flex:none;color:var(--cyan);margin-top:2px}
+
+/* timeline */
+.tl{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:56px;position:relative}
+.tl::before{content:"";position:absolute;left:5%;right:5%;top:27px;height:2px;background:var(--edge)}
+.tl::after{content:"";position:absolute;left:5%;top:27px;height:2px;width:0;background:linear-gradient(90deg,var(--cyan),var(--violet),var(--pink));transition:width 2s cubic-bezier(.3,.7,.2,1)}
+.tl.in::after{width:90%}
+.st{position:relative;text-align:center;padding-inline:8px}
+.st .n{width:56px;height:56px;border-radius:50%;margin:0 auto;display:grid;place-items:center;font-family:var(--font-display);font-weight:800;font-size:1.2rem;background:var(--bg2);border:2px solid var(--violet);box-shadow:0 0 0 6px var(--bg),0 0 28px rgba(139,108,255,.5);position:relative;z-index:1}
+.st h3{font-size:1.15rem;margin-top:20px}
+.st p{margin:8px 0 0;color:var(--muted);font-size:.9rem}
+
+/* reviews */
+.rv-wrap{position:relative;max-width:760px;margin:46px auto 0;min-height:250px}
+.rev{position:absolute;inset:0;padding:38px;border-radius:30px;background:var(--glass);border:1px solid var(--edge);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);opacity:0;transform:translateX(40px) scale(.97);transition:opacity .7s,transform .7s;pointer-events:none}
+.rev.on{opacity:1;transform:none;pointer-events:auto}
+.rev q{display:block;font-family:var(--font-display);font-size:clamp(1.2rem,2.6vw,1.65rem);line-height:1.35;quotes:none;font-weight:600}
+.rev footer{margin-top:22px;display:flex;align-items:center;gap:12px;color:var(--muted);font-size:.9rem}
+.rev footer i{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--violet),var(--pink))}
+.dots{display:flex;justify-content:center;gap:10px;margin-top:20px}
+.dots button{width:10px;height:10px;border-radius:99px;border:0;background:var(--edge);cursor:pointer;transition:width .3s,background .3s;padding:0}
+.dots button.on{width:30px;background:var(--cyan)}
+.sample{text-align:center;font-size:.78rem;color:var(--muted);margin-top:14px}
+
+/* booking */
+.book .panel{display:grid;grid-template-columns:1fr 1fr;gap:48px;padding:clamp(28px,5vw,60px);border-radius:40px;background:linear-gradient(150deg,rgba(139,108,255,.25),rgba(79,240,210,.08) 60%,rgba(255,122,198,.12));border:1px solid var(--edge);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.info{display:grid;gap:20px;margin-top:30px}
+.info div{display:flex;gap:14px;color:#dcd7ff;font-size:.95rem}
+.info svg{width:22px;height:22px;flex:none;color:var(--cyan);margin-top:2px}
+.info b{display:block;color:#fff}
+form{display:grid;gap:16px;background:rgba(10,7,32,.6);padding:30px;border-radius:28px;border:1px solid var(--edge)}
+label{display:grid;gap:7px;font-size:.8rem;font-weight:700;color:#cfc8ff}
+input,select{font:inherit;color:var(--text);padding:14px 16px;border-radius:14px;border:1.5px solid var(--edge);background:rgba(255,255,255,.05);width:100%}
+select option{color:#111}
+input:focus,select:focus{border-color:var(--violet)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+form .btn{width:100%}
+.fine{margin:0;text-align:center;font-size:.76rem;color:var(--muted)}
+
+/* faq */
+.faq{max-width:800px;margin:36px auto 0}
+details{border-bottom:1px solid var(--edge);padding:20px 4px}
+summary{display:flex;justify-content:space-between;gap:16px;cursor:pointer;list-style:none;font-weight:700;font-size:1.08rem}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:1.6rem;line-height:1;color:var(--cyan);transition:transform .3s}
+details[open] summary::after{transform:rotate(135deg)}
+details p{margin:12px 0 0;color:var(--muted)}
+
+footer.foot{padding-block:36px;border-top:1px solid var(--edge);color:var(--muted);font-size:.88rem}
+footer.foot .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+
+.fab{position:fixed;right:max(18px,env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:55;width:60px;height:60px;border-radius:50%;background:#1fb855;display:grid;place-items:center;color:#fff;box-shadow:0 14px 30px -8px rgba(31,184,85,.7);animation:pulse 2.4s infinite}
+.fab svg{width:30px;height:30px}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(31,184,85,.6),0 14px 30px -8px rgba(31,184,85,.7)}70%,100%{box-shadow:0 0 0 22px rgba(31,184,85,0),0 14px 30px -8px rgba(31,184,85,.7)}}
+
+/* scroll reveal (only hides when JS is running) */
+.js .rv{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1);transition-delay:var(--d,0s)}
+.js .rv.in{opacity:1;transform:none}
+
+@media(max-width:980px){
+  .hero .wrap,.ba .wrap,.book .panel{grid-template-columns:1fr}
+  .tgrid,.sgrid{grid-template-columns:repeat(2,1fr)}
+  .links{display:none}
+  .tl{grid-template-columns:1fr 1fr;row-gap:40px}.tl::before,.tl::after{display:none}
+  .chip.c1{left:0}.chip.c2{right:0}
+}
+@media(max-width:560px){
+  section{padding-block:68px}
+  .tgrid,.two{grid-template-columns:1fr}
+  .sgrid{grid-template-columns:1fr 1fr;gap:12px}
+  .stat{padding:22px 16px}
+  .nav .btn span{display:none}
+  .rev{padding:26px}
+  .rv-wrap{min-height:330px}
+  .chip{font-size:.74rem;padding:8px 12px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .js .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<div class="progress" id="prog"></div>
+<div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="stars-bg" aria-hidden="true"></div>
+<div class="glow" id="glow" aria-hidden="true"></div>
+
+<header class="nav">
+  <div class="wrap">
+    <div class="bar">
+      <a class="brand" href="#top"><i><svg viewBox="0 0 100 110" fill="#fff"><path d="M30 6C14 6 4 20 4 38c0 12 5 20 8 34 3 14 3 34 13 34 9 0 8-22 25-22s16 22 25 22c10 0 10-20 13-34 3-14 8-22 8-34C96 20 86 6 70 6c-8 0-13 4-20 4S38 6 30 6z"/></svg></i><span data-c="name"></span></a>
+      <nav class="links" aria-label="Main"><a href="#treatments">Treatments</a><a href="#smile">Smile makeover</a><a href="#process">Process</a><a href="#reviews">Reviews</a><a href="#faq">FAQ</a></nav>
+      <a class="btn btn-main" data-wa href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.600 15.100L2 22l5-1.300A10 10 0 1 0 12 2zm5.800 14.200c-.2.700-1.400 1.300-2 1.400-.5.100-1.200.1-1.900-.1-.4-.1-1-.3-1.700-.6-3-1.300-4.900-4.300-5-4.500-.1-.2-1.200-1.600-1.200-3s.8-2.100 1-2.400c.3-.3.600-.3.800-.3h.6c.2 0 .4 0 .6.500l.8 2c.1.200.1.400 0 .5l-.4.600-.4.400c-.1.200-.3.400-.1.700.2.300.8 1.300 1.700 2.100 1.200 1 2.100 1.400 2.400 1.500.3.200.5.100.7-.1l.9-1.100c.2-.3.400-.2.700-.1l1.900.9c.3.100.5.200.5.400.1.100.1.700-.1 1.400z"/></svg><span>Book now</span></a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="badge"><span class="dot"></span><span data-c="badge"></span></span>
+      <h1>
+        <span class="hw"><span style="--i:0">Your</span></span>
+        <span class="hw"><span style="--i:1">smile,</span></span><br>
+        <span class="hw"><span style="--i:2" class="grad">beautifully</span></span>
+        <span class="hw"><span style="--i:3">reimagined.</span></span>
+      </h1>
+      <p class="lead" data-c="intro"></p>
+      <div class="cta">
+        <a class="btn btn-main" data-wa href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.600 15.100L2 22l5-1.300A10 10 0 1 0 12 2zm5.800 14.200c-.2.700-1.400 1.300-2 1.400-.5.100-1.200.1-1.900-.1-.4-.1-1-.3-1.700-.6-3-1.300-4.900-4.300-5-4.500-.1-.2-1.200-1.600-1.200-3s.8-2.100 1-2.400c.3-.3.600-.3.800-.3h.6c.2 0 .4 0 .6.500l.8 2c.1.200.1.400 0 .5l-.4.600-.4.400c-.1.200-.3.400-.1.700.2.300.8 1.300 1.700 2.100 1.200 1 2.100 1.400 2.400 1.500.3.200.5.100.7-.1l.9-1.100c.2-.3.400-.2.700-.1l1.900.9c.3.100.5.200.5.400.1.100.1.700-.1 1.400z"/></svg>Book on WhatsApp</a>
+        <a class="btn btn-line" href="#smile">See the transformation</a>
+      </div>
+      <div class="proof">
+        <div class="faces" aria-hidden="true"><i></i><i></i><i></i></div>
+        <small><span class="gold">&#9733;&#9733;&#9733;&#9733;&#9733;</span><br><b data-c="rating"></b> rated by <span data-c="reviews"></span> happy patients</small>
+      </div>
+    </div>
+
+    <div class="scene" id="scene" aria-hidden="true">
+      <div class="card3d" id="card3d">
+        <div class="ring r2"></div><div class="ring r1"></div>
+        <svg class="tooth" viewBox="0 0 100 110"><defs><linearGradient id="tg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".6" stop-color="#e6e0ff"/><stop offset="1" stop-color="#b9aaff"/></linearGradient></defs><path fill="url(#tg)" d="M30 6C14 6 4 20 4 38c0 12 5 20 8 34 3 14 3 34 13 34 9 0 8-22 25-22s16 22 25 22c10 0 10-20 13-34 3-14 8-22 8-34C96 20 86 6 70 6c-8 0-13 4-20 4S38 6 30 6z"/><path fill="#fff" opacity=".7" d="M22 18c-6 4-9 11-9 19 0 3 1 5 3 5 2-9 5-17 10-22z"/></svg>
+        <div class="chip c1"><b></b>Painless root canal</div>
+        <div class="chip c2"><b></b>Smile design</div>
+        <div class="chip c3"><b></b>Same-day slots</div>
+        <svg class="sp s1" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c1 7 5 11 12 12-7 1-11 5-12 12-1-7-5-11-12-12 7-1 11-5 12-12z"/></svg>
+        <svg class="sp s2" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c1 7 5 11 12 12-7 1-11 5-12 12-1-7-5-11-12-12 7-1 11-5 12-12z"/></svg>
+        <svg class="sp s3" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c1 7 5 11 12 12-7 1-11 5-12 12-1-7-5-11-12-12 7-1 11-5 12-12z"/></svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marq" aria-hidden="true"><div class="track" id="track"></div></div>
+
+<section class="stats">
+  <div class="wrap"><div class="sgrid" id="sgrid"></div></div>
+</section>
+
+<section id="treatments">
+  <div class="wrap">
+    <span class="eyebrow rv">Treatments</span>
+    <h2 class="h2 rv" style="--d:.08s">Complete dental care, <span class="grad">designed around you.</span></h2>
+    <p class="lead rv" style="--d:.16s">Every treatment is explained in plain language, with the cost agreed before we begin.</p>
+    <div class="tgrid" id="tgrid"></div>
+  </div>
+</section>
+
+<section class="ba" id="smile">
+  <div class="wrap">
+    <div class="rv">
+      <span class="eyebrow">Smile makeover</span>
+      <h2 class="h2">Drag to see the difference.</h2>
+      <p class="lead">Whitening, polishing and gentle shaping can lift your smile in a single visit. Slide across to preview the effect.</p>
+      <ul class="checks">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Safe for enamel, no harsh scrubbing</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Visible brightening in about an hour</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Aftercare tips sent on WhatsApp</li>
+      </ul>
+    </div>
+    <div class="rv" style="--d:.15s">
+      <div class="ba-box" id="ba">
+        <svg class="layer" viewBox="0 0 640 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true" id="after"></svg>
+        <div class="ba-top"><svg class="layer" viewBox="0 0 640 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true" id="before"></svg></div>
+        <span class="lbl l">BEFORE</span><span class="lbl r">AFTER</span>
+        <input type="range" min="2" max="98" value="50" id="rng" aria-label="Before and after slider">
+        <div class="ba-handle"><i>&#8596;</i></div>
+      </div>
+      <p class="ba-note">Illustration for demonstration only. Individual results vary.</p>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap" style="text-align:center">
+    <span class="eyebrow rv">Your visit</span>
+    <h2 class="h2 rv" style="--d:.08s">Four calm steps to a healthier smile.</h2>
+    <div class="tl rv" id="tl" style="--d:.15s">
+      <div class="st"><div class="n">1</div><h3>Message us</h3><p>Tell us what is bothering you on WhatsApp.</p></div>
+      <div class="st"><div class="n">2</div><h3>Pick a slot</h3><p>We confirm a time that suits your day.</p></div>
+      <div class="st"><div class="n">3</div><h3>Check-up and plan</h3><p>Clear options and the exact cost, before anything starts.</p></div>
+      <div class="st"><div class="n">4</div><h3>Treatment, at ease</h3><p>Comfortable care, then reminders for follow-ups.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="wrap" style="text-align:center">
+    <span class="eyebrow rv">Patient love</span>
+    <h2 class="h2 rv" style="--d:.08s">Words from people we have treated.</h2>
+    <div class="rv-wrap rv" id="revs" style="--d:.15s"></div>
+    <div class="dots" id="dots"></div>
+    <p class="sample" data-c="sampleNote"></p>
+  </div>
+</section>
+
+<section class="book" id="book">
+  <div class="wrap">
+    <div class="panel rv">
+      <div>
+        <span class="eyebrow">Book a visit</span>
+        <h2 class="h2">Ready when you are.</h2>
+        <p class="lead">Fill in the short form and your message opens in WhatsApp, ready to send.</p>
+        <div class="info">
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span><b>Find us</b><span data-c="address"></span></span></div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span><b>Clinic hours</b><span data-c="hours"></span></span></div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.900v3a2 2 0 0 1-2.200 2 19.800 19.800 0 0 1-8.600-3.100 19.500 19.500 0 0 1-6-6A19.800 19.800 0 0 1 2.100 4.200 2 2 0 0 1 4.100 2h3a2 2 0 0 1 2 1.700c.1 1 .4 1.900.7 2.800a2 2 0 0 1-.5 2.100L8.100 9.900a16 16 0 0 0 6 6l1.300-1.300a2 2 0 0 1 2.100-.4c.9.300 1.800.6 2.800.7a2 2 0 0 1 1.700 2z"/></svg><span><b>Call</b><span data-c="phoneShow"></span></span></div>
+        </div>
+      </div>
+      <form id="form">
+        <div class="two">
+          <label for="n">Your name<input id="n" required autocomplete="name" placeholder="e.g. Priya"></label>
+          <label for="p">Phone<input id="p" type="tel" autocomplete="tel" placeholder="Optional"></label>
+        </div>
+        <label for="t">What do you need?<select id="t"></select></label>
+        <label for="w">Preferred time<select id="w"><option>Morning</option><option>Afternoon</option><option>Evening</option><option>Any time</option></select></label>
+        <button class="btn btn-main" type="submit">Send on WhatsApp</button>
+        <p class="fine">Your message goes straight to the clinic's WhatsApp.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap" style="text-align:center">
+    <span class="eyebrow rv">Questions</span>
+    <h2 class="h2 rv" style="--d:.08s">Before you visit</h2>
+    <div class="faq rv" id="faqList" style="text-align:left;--d:.15s"></div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>&copy; <span id="yr"></span> <span data-c="name"></span>, <span data-c="area"></span></span>
+    <span>Website concept by MB Digital Studio, Coimbatore</span>
+  </div>
+</footer>
+
+<a class="fab" data-wa href="#" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.600 15.100L2 22l5-1.300A10 10 0 1 0 12 2zm5.800 14.200c-.2.700-1.400 1.300-2 1.400-.5.100-1.200.1-1.900-.1-.4-.1-1-.3-1.700-.6-3-1.300-4.900-4.300-5-4.500-.1-.2-1.200-1.600-1.200-3s.8-2.100 1-2.400c.3-.3.600-.3.800-.3h.6c.2 0 .4 0 .6.500l.8 2c.1.200.1.400 0 .5l-.4.600-.4.400c-.1.200-.3.400-.1.700.2.300.8 1.300 1.700 2.100 1.200 1 2.100 1.400 2.400 1.500.3.200.5.100.7-.1l.9-1.100c.2-.3.400-.2.700-.1l1.900.9c.3.100.5.200.5.400.1.100.1.700-.1 1.400z"/></svg></a>
+
+<script>
+document.documentElement.classList.add("js");
+
+/* ===== EDIT THIS BLOCK FOR EACH CLINIC ===== */
+var CLIENT = {
+  name: "Lumina Dental Studio",
+  area: "Coimbatore",
+  badge: "Now booking in Coimbatore",
+  address: "Add full street address, Coimbatore, Tamil Nadu",
+  hours: "Mon to Sat, 10:00 AM to 8:00 PM",
+  phoneShow: "+91 XXXXX XXXXX",
+  whatsapp: "91XXXXXXXXXX",        // country code + number, digits only
+  rating: "4.9",
+  reviews: "200+",
+  intro: "Painless dentistry, modern smile design and trusted root canal care, delivered with a gentle touch and honest pricing.",
+  marquee: ["Root canal","Smile design","Teeth whitening","Braces and aligners","Dental implants","Crowns and bridges","Scaling and polish","Kids dentistry"],
+  stats: [[4.9,"Google rating","",1],[200,"Happy patients","+",0],[8,"Treatments offered","",0],[10,"Years of experience","+",0]],
+  treatments: [
+    ["Root canal treatment","Save your natural tooth with comfortable, carefully planned care.","M12 2v6M9 8h6l-1 14h-4z","Most trusted"],
+    ["Teeth whitening","Brighter shades in a single sitting, gentle on enamel.","M12 3v3M12 18v3M3 12h3M18 12h3M6 6l2 2M16 16l2 2M18 6l-2 2M8 16l-2 2","Popular"],
+    ["Braces and aligners","Straighter teeth for teens and adults, planned step by step.","M3 9h18M3 15h18M8 6v12M16 6v12",""],
+    ["Dental implants","A permanent, natural-feeling replacement for missing teeth.","M12 3v7m-4 0h8l-1 4h-6zm2 4v6m4-6v6",""],
+    ["Crowns and bridges","Protect or replace damaged teeth with natural-looking caps.","M5 18l2-12 5 4 5-4 2 12z",""],
+    ["Cleaning and scaling","Fresher breath and healthier gums, every six months.","M12 3l2.200 5 5.300.5-4 3.600 1.200 5.300L12 14.700 7.300 17.400 8.500 12 4.500 8.500 9.800 8z",""],
+    ["Fillings","Tooth-coloured fillings that blend in and restore strength.","M4 12h16M12 4v16",""],
+    ["Kids dentistry","A friendly first visit that builds lifelong confidence.","M12 21s-7-4.500-7-10a4 4 0 0 1 7-2.600A4 4 0 0 1 19 11c0 5.500-7 10-7 10z",""]
+  ],
+  /* SAMPLE reviews: replace with real patient reviews (with permission) before sending to a clinic. */
+  sampleNote: "Sample reviews shown for design preview.",
+  reviewsList: [
+    ["The doctor explained everything before starting, and I felt no pain at all.","Patient, root canal"],
+    ["Clean clinic, fair pricing and very polite staff. Booking on WhatsApp was so easy.","Patient, scaling and whitening"],
+    ["My daughter was nervous, but the team made her comfortable straight away.","Parent of a young patient"]
+  ],
+  faq: [
+    ["Is root canal treatment painful?","With modern anaesthesia it feels much like getting a filling. Most patients are surprised by how comfortable it is."],
+    ["How much will my treatment cost?","The doctor examines you first and tells you the exact cost before anything begins. You decide whether to go ahead."],
+    ["Can I book for the same day?","Often yes. Message us on WhatsApp and we will confirm the earliest slot."],
+    ["Do you treat children and seniors?","Yes. We see the whole family, from a child's first check-up to dentures for seniors."]
+  ]
+};
+/* ===== END EDIT BLOCK ===== */
+
+(function(){
+  var C = CLIENT, $ = function(s){return document.querySelector(s)};
+  function wa(m){return "https://wa.me/"+C.whatsapp+"?text="+encodeURIComponent(m)}
+  document.querySelectorAll("[data-c]").forEach(function(e){e.textContent=C[e.getAttribute("data-c")]||""});
+  document.querySelectorAll("[data-wa]").forEach(function(a){a.href=wa("Hello, I would like to book an appointment at "+C.name+".");a.target="_blank";a.rel="noopener"});
+  $("#yr").textContent=new Date().getFullYear();
+
+  /* marquee (content doubled for a seamless loop) */
+  var m=C.marquee.map(function(t){return "<span>"+t+"</span>"}).join("");
+  $("#track").innerHTML=m+m;
+
+  /* stats */
+  $("#sgrid").innerHTML=C.stats.map(function(s,i){
+    return '<div class="stat rv" style="--d:'+(i*.08)+'s"><b data-count="'+s[0]+'" data-suf="'+s[2]+'" data-dec="'+s[3]+'">0</b><span>'+s[1]+'</span></div>';
+  }).join("");
+
+  /* treatments */
+  $("#tgrid").innerHTML=C.treatments.map(function(t,i){
+    return '<article class="tc rv" style="--d:'+((i%4)*.08)+'s"><div class="tic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="'+t[2]+'"/></svg></div><h3>'+t[0]+'</h3><p>'+t[1]+'</p>'+(t[3]?'<span class="tag">'+t[3]+'</span>':'')+'</article>';
+  }).join("");
+  document.querySelectorAll(".tc").forEach(function(c){
+    c.addEventListener("pointermove",function(e){var r=c.getBoundingClientRect();c.style.setProperty("--mx",(e.clientX-r.left)+"px");c.style.setProperty("--my",(e.clientY-r.top)+"px")});
+  });
+
+  /* form select, faq */
+  $("#t").innerHTML=C.treatments.map(function(t){return "<option>"+t[0]+"</option>"}).join("")+"<option>Not sure, need a check-up</option>";
+  $("#faqList").innerHTML=C.faq.map(function(f){return "<details><summary>"+f[0]+"</summary><p>"+f[1]+"</p></details>"}).join("");
+  $("#form").addEventListener("submit",function(e){
+    e.preventDefault();
+    var n=$("#n").value.trim(),p=$("#p").value.trim();
+    var msg="Hello "+C.name+", I am "+n+". I would like to book for: "+$("#t").value+". Preferred time: "+$("#w").value+"."+(p?" My number: "+p+".":"");
+    window.open(wa(msg),"_blank","noopener");
+  });
+
+  /* whitening slider: a row of illustrated teeth, stained vs bright */
+  function teeth(fill,hi,stain){
+    var xs=[70,150,230,320,410,490,570];  /* centers */
+    var s='<rect width="640" height="400" fill="#2a1346"/><path d="M0 120C140 60 500 60 640 120V400H0z" fill="#d9648f"/><path d="M0 150C140 100 500 100 640 150V320C500 360 140 360 0 320z" fill="#7a1c3f"/>';
+    xs.forEach(function(x,i){
+      var w=i===3?86:(i%2?74:70), h=i===3?160:150, y=i===3?118:126;
+      s+='<g transform="translate('+(x-w/2)+' '+y+')"><path d="M0 '+(h*.3)+'C0 '+(h*.05)+' '+(w*.2)+' 0 '+(w/2)+' 0S'+w+' '+(h*.05)+' '+w+' '+(h*.3)+'C'+w+' '+(h*.7)+' '+(w*.85)+' '+h+' '+(w/2)+' '+h+'S0 '+(h*.7)+' 0 '+(h*.3)+'z" fill="'+fill+'"/>';
+      s+='<path d="M'+(w*.2)+' '+(h*.2)+'C'+(w*.12)+' '+(h*.3)+' '+(w*.12)+' '+(h*.5)+' '+(w*.2)+' '+(h*.6)+'" stroke="'+hi+'" stroke-width="5" stroke-linecap="round" fill="none" opacity=".7"/>';
+      if(stain)s+='<ellipse cx="'+(w*.5)+'" cy="'+(h*.78)+'" rx="'+(w*.3)+'" ry="'+(h*.1)+'" fill="'+stain+'" opacity=".45"/>';
+      s+='</g>';
+    });
+    return s;
+  }
+  $("#after").innerHTML=teeth("#ffffff","#ffffff");
+  $("#before").innerHTML=teeth("#d9bd72","#f0dd9d","#9a6b1f");
+  $("#rng").addEventListener("input",function(e){$("#ba").style.setProperty("--pos",e.target.value+"%")});
+
+  /* reviews carousel */
+  var box=$("#revs"),dots=$("#dots"),cur=0,timer;
+  box.innerHTML=C.reviewsList.map(function(r,i){
+    return '<div class="rev'+(i?'':' on')+'"><span class="gold" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span><q>'+r[0]+'</q><footer><i></i><span>'+r[1]+'</span></footer></div>';
+  }).join("");
+  dots.innerHTML=C.reviewsList.map(function(r,i){return '<button aria-label="Review '+(i+1)+'"'+(i?'':' class="on"')+'></button>'}).join("");
+  var rv=box.children,dd=dots.children;
+  function show(i){cur=i;for(var k=0;k<rv.length;k++){rv[k].classList.toggle("on",k===i);dd[k].classList.toggle("on",k===i)}}
+  function auto(){clearInterval(timer);timer=setInterval(function(){show((cur+1)%rv.length)},5200)}
+  for(var k=0;k<dd.length;k++)(function(k){dd[k].addEventListener("click",function(){show(k);auto()})})(k);
+  box.addEventListener("pointerenter",function(){clearInterval(timer)});box.addEventListener("pointerleave",auto);auto();
+
+  /* scroll reveal and count-up */
+  var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function count(el){
+    var end=parseFloat(el.dataset.count),dec=+el.dataset.dec,suf=el.dataset.suf||"",t0=null;
+    function f(t){t0=t0||t;var p=Math.min((t-t0)/1600,1),e=1-Math.pow(1-p,3);el.textContent=(end*e).toFixed(dec)+suf;if(p<1)requestAnimationFrame(f)}
+    reduce?(el.textContent=end.toFixed(dec)+suf):requestAnimationFrame(f);
+  }
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(e.isIntersecting){e.target.classList.add("in");var c=e.target.querySelector("[data-count]");if(c)count(c);io.unobserve(e.target)}
+  })},{threshold:.15});
+  document.querySelectorAll(".rv").forEach(function(el){io.observe(el)});
+  var tlio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");tlio.unobserve(e.target)}})},{threshold:.4});
+  tlio.observe($("#tl"));
+
+  /* hero 3D tilt, cursor glow, scroll progress */
+  var scene=$("#scene"),card=$("#card3d");
+  if(!reduce&&window.matchMedia("(hover:hover)").matches){
+    scene.addEventListener("pointermove",function(e){
+      var r=scene.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+      card.style.transform="rotateY("+(x*18)+"deg) rotateX("+(-y*18)+"deg)";
+    });
+    scene.addEventListener("pointerleave",function(){card.style.transform=""});
+    var g=$("#glow");
+    window.addEventListener("pointermove",function(e){g.style.opacity=1;g.style.left=e.clientX+"px";g.style.top=e.clientY+"px"},{passive:true});
+  }
+  var pr=$("#prog");
+  window.addEventListener("scroll",function(){var h=document.documentElement;pr.style.transform="scaleX("+(h.scrollTop/(h.scrollHeight-h.clientHeight||1))+")"},{passive:true});
+})();
+</script>
+</body>
+</html>
